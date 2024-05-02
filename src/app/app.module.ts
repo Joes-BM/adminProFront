@@ -22,7 +22,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    AuthModule
+    AuthModule,
   ],
   bootstrap: [AppComponent]
 })

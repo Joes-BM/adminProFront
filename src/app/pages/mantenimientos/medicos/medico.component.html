@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Médico</h4>
+                <h6 class="card-subtitle">Actualización de Información</h6>
+                <form class="form p-t-20"
+                        [formGroup]="medicoForm"
+                        (submit)="guardarMedico()">
+                    <div class="form-group" *ngIf="medicoSeleccionado">
+                        <label for="exampleInputuname">Fotografia</label>
+                        <div class="input-group">
+                            <img [src]="medicoSeleccionado.img | imagen:'medicos'"   class="w200">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                formControlName="nombre"
+                                class="form-control" 
+                                id="exampleInputuname" 
+                                placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Hospital</label>
+                        <div class="input-group">
+                            <select class="form-control"
+                                formControlName="hospital">
+                                <option value="">Elija un Hospital</option>
+                                <option *ngFor="let hospital of hospitales" 
+                                    [value]="hospital._id">
+                                    {{hospital.nombre}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" 
+                        class="btn btn-success waves-effect waves-light m-r-10 fa fa-save"
+                        [disabled]="medicoForm.invalid">
+                        Guardar
+                    </button>
+                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6" *ngIf="hospitalSeleccionado">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hospital</h4>
+                <h6 class="card-subtitle">{{hospitalSeleccionado.nombre}} </h6>
+                <img [src]="hospitalSeleccionado.img | imagen:'hospitales'" class="img-thumbnail">
+                        <br>
+                <!-- <form class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Hospital</label>
+                        <div class="input-group">
+                            <select class="form-control">
+                                <option>hospital 1</option>
+                                <option>hospital 2</option>
+                                <option>hospital 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Guardar</button>
+                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                </form> -->
+            </div>
+        </div>
+    </div>
+</div>
